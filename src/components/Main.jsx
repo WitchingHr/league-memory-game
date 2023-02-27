@@ -7,10 +7,9 @@ export default function Main() {
 
   return (
     <div className="Main">
-      <div className="content">
-        <Counter score={score} />
-        <CardContainer score={score} setScore={setScore} />
-      </div>
+        <div className="content">
+          <CardContainer score={score} setScore={setScore} />
+        </div>
     </div>
   );
 }

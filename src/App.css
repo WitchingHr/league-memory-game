@@ -1,17 +1,28 @@
 :root {
   --background-color: rgb(32, 32, 46);
+  --background-color-light: rgb(63, 63, 97);
 }
 
 .App {
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--background-color);
+  background-color: var(--background-color-light);
 }
 
 .Header {
-  background-color: blue;
+  background-color: var(--background-color);
   height: 65px;
+  display: flex;
+  align-items: center;
+  color: #ff009f;
+  font-size: 25px;
+  font-weight: bolder;
+  box-shadow: 0 0 6px 0px black;
+}
+
+.dark-harvest {
+  height: 100%;
 }
 
 .Main {
@@ -19,12 +30,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  justify-content: center;
 }
 
 .Counter {
@@ -36,15 +42,39 @@
   margin-top: 40px;
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px 0px black;
+}
+
 .Card-Container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 0 3px;
-  background-color: orange;
-  border-radius: 10px;
-  width: 80vw;
+  width: 70vw;
   height: min-content;
+  padding: 3px 3px 0 3px;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .Card {
@@ -52,7 +82,16 @@
 }
 
 .Card:hover {
-  transform: scale(1.1);
+  animation: tilter 0.2s infinite alternate-reverse;
+}
+
+@keyframes tilter {
+  to {
+    transform: scale(1.1) rotate(1deg);
+  }
+  from {
+    transform: scale(1.1) rotate(-1deg);
+  }
 }
 
 img {
