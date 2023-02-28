@@ -5,6 +5,18 @@ import { Context } from "../App";
 export default function CardContainer() {
   const { score, setScore, bestScore, setBestScore } = useContext(Context);
 
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 768);
+
+  function updateMedia() {
+    setDesktop(window.innerWidth > 768);
+  };
+
+  // Update state on resize
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+
   const [images, setImages] = useState([]);
   const [correct, setCorrect] = useState([]);
   const [spree, setSpree] = useState(0);
@@ -22,7 +34,7 @@ export default function CardContainer() {
 
   // Set images to array of random numbers
   function setInitialState() {
-    while (numbers.length !== 10) {
+    while (numbers.length !== 12) {
       const num = getRandom();
       numbers.push(num);
     }
@@ -174,12 +186,18 @@ export default function CardContainer() {
   }
 
   return (
-    <div className="Card-Container">
+    <div className={'Card-Container ' + (isDesktop ? 'big' : 'small')}>
       {images.map((img) =>
         <Card
           key={img}
           id={img}
-          src={require(`../assets/loading/img_${img}.jpg`)}
+          src={
+            (isDesktop ?
+              require(`../assets/big/img_${img}.jpg`)
+            : 
+              require(`../assets/small/img_${img}.jpg`)
+            )
+          }
           handleClick={handleClick}
         />
       )}

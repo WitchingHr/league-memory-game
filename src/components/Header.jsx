@@ -6,8 +6,10 @@ export default function Header() {
 
   return (
     <div className="Header">
-      <img alt="Logo" className="dark-harvest" src={Dark} />
-      League Memory Game
+      <span>
+        <img alt="Logo" className="dark-harvest" src={Dark} />
+        League Memory Game
+      </span>
       <Counter />
     </div>
   );
