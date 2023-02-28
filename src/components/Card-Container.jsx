@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
 export default function CardContainer({ score, setScore, bestScore, setBestScore}) {
+
   const [images, setImages] = useState([]);
   const [correct, setCorrect] = useState([]);
   const [spree, setSpree] = useState(0);
@@ -83,11 +84,43 @@ export default function CardContainer({ score, setScore, bestScore, setBestScore
     audio.play();
   }
 
+  const app = document.querySelector('.App');
+  function animateWin() {
+    app.animate(
+      [
+        { background: "rgb(63, 63, 97)" },
+        { background: "#024c02" },
+        { background: "rgb(63, 63, 97)" }
+      ],
+      {
+        duration: 2000,
+        iterations: 1,
+        easing: "cubic-bezier(.41,.3,.25,1.09)"
+      }
+    )
+  }
+
+  function animateLoss() {
+    app.animate(
+      [
+        { background: "rgb(63, 63, 97)" },
+        { background: "#6a0101" },
+        { background: "rgb(63, 63, 97)" }
+      ],
+      {
+        duration: 2000,
+        iterations: 1,
+        easing: "cubic-bezier(.41,.3,.25,1.09)"
+      }
+    )
+  }
+
   // Check if round is won on each correct click
   useEffect(() => {
     // If so:
     if (correct.length === 10) {
       playAudio();
+      animateWin();
 
       // Get new board
       setInitialState();
@@ -120,10 +153,13 @@ export default function CardContainer({ score, setScore, bestScore, setBestScore
     }
   }
 
+
   function handleIncorrect() {
     // Play sound
     const audio = new Audio(require('../assets/audio/slain.ogg'));
     audio.play();
+
+    animateLoss();
 
     // Update best score
     updateBestScore();
