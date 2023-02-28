@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import CardContainer from "./Card-Container";
-import Counter from "./Counter";
 
-export default function Main() {
-  const [score, setScore] = useState(0);
+export default function Main({ score, setScore, setBestScore }) {
 
   return (
     <div className="Main">
         <div className="content">
-          <CardContainer score={score} setScore={setScore} />
+          <CardContainer
+            score={score}
+            setScore={setScore}
+            setBestScore={setBestScore}
+          />
         </div>
     </div>
   );
