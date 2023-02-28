@@ -13,6 +13,7 @@ function App() {
       <Main
         score={score}
         setScore={setScore}
+        bestScore={bestScore}
         setBestScore={setBestScore}
       />
     </div>

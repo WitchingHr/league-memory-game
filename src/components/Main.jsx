@@ -1,7 +1,7 @@
 import React from "react";
 import CardContainer from "./Card-Container";
 
-export default function Main({ score, setScore, setBestScore }) {
+export default function Main({ score, setScore, bestScore, setBestScore }) {
 
   return (
     <div className="Main">
@@ -9,6 +9,7 @@ export default function Main({ score, setScore, setBestScore }) {
           <CardContainer
             score={score}
             setScore={setScore}
+            bestScore={bestScore}
             setBestScore={setBestScore}
           />
         </div>

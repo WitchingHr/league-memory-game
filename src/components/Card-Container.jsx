@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
-export default function CardContainer({ score, setScore }) {
+export default function CardContainer({ score, setScore, bestScore, setBestScore}) {
   const [images, setImages] = useState([]);
   const [correct, setCorrect] = useState([]);
   const [spree, setSpree] = useState(0);
@@ -57,25 +57,25 @@ export default function CardContainer({ score, setScore }) {
   function playAudio() {
     let audio;
     switch (spree) {
-      case 1:
+      case 0:
         audio = new Audio(require('../assets/audio/first_blood.ogg'));
         break;
-      case 2:
+      case 1:
         audio = new Audio(require('../assets/audio/1_spree.ogg'));
         break;
-      case 3:
+      case 2:
         audio = new Audio(require('../assets/audio/2_spree.ogg'));
         break;
-      case 4:
+      case 3:
         audio = new Audio(require('../assets/audio/3_spree.ogg'));
         break;
-      case 5:
+      case 4:
         audio = new Audio(require('../assets/audio/4_spree.ogg'));
         break;
-      case 6:
+      case 5:
         audio = new Audio(require('../assets/audio/5_spree.ogg'));
         break;
-      case 7:
+      case 6:
       default:
         audio = new Audio(require('../assets/audio/6_spree.ogg'));
         break;
@@ -85,10 +85,18 @@ export default function CardContainer({ score, setScore }) {
 
   // Check if round is won on each correct click
   useEffect(() => {
+    // If so:
     if (correct.length === 10) {
-      // If so, play sound and reset the board with new images
       playAudio();
+
+      // Get new board
       setInitialState();
+
+      // Reset correct array
+      setCorrect([]);
+
+      // Increment spree
+      setSpree(spree + 1);
     }
   }, [correct]);
 
@@ -106,14 +114,25 @@ export default function CardContainer({ score, setScore }) {
     setImages(next);
   }
 
+  function updateBestScore() {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+  }
+
   function handleIncorrect() {
     // Play sound
     const audio = new Audio(require('../assets/audio/slain.ogg'));
     audio.play();
 
-    // Reset score and board
+    // Update best score
+    updateBestScore();
+
+    // Reset all states
     setScore(0);
     setInitialState();
+    setCorrect([]);
+    setSpree(0);
   }
 
   return (
