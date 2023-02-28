@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "./Card";
+import { Context } from "../App";
 
-export default function CardContainer({ score, setScore, bestScore, setBestScore}) {
+export default function CardContainer() {
+  const { score, setScore, bestScore, setBestScore } = useContext(Context);
 
   const [images, setImages] = useState([]);
   const [correct, setCorrect] = useState([]);
@@ -12,7 +14,7 @@ export default function CardContainer({ score, setScore, bestScore, setBestScore
   function getRandom() {
     const num = Math.floor(Math.random() * 1651);
     if (!numbers.includes(num)) {
-      return num;     
+      return num;
     } else {
       return getRandom();
     }

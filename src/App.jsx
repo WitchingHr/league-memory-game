@@ -1,7 +1,9 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, createContext } from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
+
+export const Context = createContext(null);
 
 function App() {
   const [score, setScore] = useState(0);
@@ -9,13 +11,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header score={score} bestScore={bestScore} />
-      <Main
-        score={score}
-        setScore={setScore}
-        bestScore={bestScore}
-        setBestScore={setBestScore}
-      />
+      <Context.Provider value={{score, setScore, bestScore, setBestScore}}>
+        <Header />
+        <Main />
+      </Context.Provider>
     </div>
   );
 }

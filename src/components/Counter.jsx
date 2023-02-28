@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../App";
 
-export default function Counter({ score, bestScore }) {
+export default function Counter() {
+  const { score, bestScore } = useContext(Context);
 
   return (
     <div className="Counter">

@@ -2,13 +2,13 @@ import React from "react";
 import Counter from "./Counter";
 import Dark from "../assets/DarkHarvest.png";
 
-export default function Header({ score, bestScore }) {
+export default function Header() {
 
   return (
     <div className="Header">
       <img alt="Logo" className="dark-harvest" src={Dark} />
       League Memory Game
-      <Counter score={score} bestScore={bestScore} />
+      <Counter />
     </div>
   );
 }
