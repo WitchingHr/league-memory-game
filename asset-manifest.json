@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/league-memory-game/static/css/main.10f6d103.css",
-    "main.js": "/league-memory-game/static/js/main.8de14eff.js",
+    "main.css": "/league-memory-game/static/css/main.6e48c8e2.css",
+    "main.js": "/league-memory-game/static/js/main.b0bd55aa.js",
     "static/media/img_742.jpg": "/league-memory-game/static/media/img_742.a10f2006b5b335d6ed5c.jpg",
     "static/media/img_27.jpg": "/league-memory-game/static/media/img_27.c946924052dc91576589.jpg",
     "static/media/img_84.jpg": "/league-memory-game/static/media/img_84.8885c8ec3637399b8922.jpg",
@@ -1664,11 +1664,11 @@
     "static/media/img_225.jpg": "/league-memory-game/static/media/img_225.07d241e51edc5b1e66ca.jpg",
     "static/media/img_329.jpg": "/league-memory-game/static/media/img_329.732da7c5d337c6791cf0.jpg",
     "index.html": "/league-memory-game/index.html",
-    "main.10f6d103.css.map": "/league-memory-game/static/css/main.10f6d103.css.map",
-    "main.8de14eff.js.map": "/league-memory-game/static/js/main.8de14eff.js.map"
+    "main.6e48c8e2.css.map": "/league-memory-game/static/css/main.6e48c8e2.css.map",
+    "main.b0bd55aa.js.map": "/league-memory-game/static/js/main.b0bd55aa.js.map"
   },
   "entrypoints": [
-    "static/css/main.10f6d103.css",
-    "static/js/main.8de14eff.js"
+    "static/css/main.6e48c8e2.css",
+    "static/js/main.b0bd55aa.js"
   ]
 }
