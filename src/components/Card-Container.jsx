@@ -99,6 +99,7 @@ export default function CardContainer() {
   }
 
   const app = document.querySelector('.App');
+  // Animation for winning round:
   function animateWin() {
     app.animate(
       [
@@ -114,6 +115,7 @@ export default function CardContainer() {
     )
   }
 
+  // Animation for loss
   function animateLoss() {
     app.animate(
       [
@@ -132,7 +134,7 @@ export default function CardContainer() {
   // Check if round is won on each correct click
   useEffect(() => {
     // If so:
-    if (correct.length === 10) {
+    if (correct.length === 12) {
       playAudio();
       animateWin();
 
@@ -161,12 +163,12 @@ export default function CardContainer() {
     setImages(next);
   }
 
-  function updateBestScore() {
+  // Update best score
+  useEffect(() => {
     if (score > bestScore) {
       setBestScore(score);
     }
-  }
-
+  }, [score]);
 
   function handleIncorrect() {
     // Play sound
@@ -174,9 +176,6 @@ export default function CardContainer() {
     audio.play();
 
     animateLoss();
-
-    // Update best score
-    updateBestScore();
 
     // Reset all states
     setScore(0);

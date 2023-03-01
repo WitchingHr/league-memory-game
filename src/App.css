@@ -1,6 +1,7 @@
 :root {
   --background-color: rgb(32, 32, 46);
   --background-color-light: rgb(63, 63, 97);
+  --text-color: #ff009f;
 }
 
 .App {
@@ -16,7 +17,7 @@
   height: 65px;
   display: flex;
   align-items: center;
-  color: #ff009f;
+  color: var(--text-color);
   font-size: 25px;
   font-weight: bolder;
   box-shadow: 0 0 6px 0px black;
@@ -29,6 +30,7 @@
 span {
   height: 65px;
   display: flex;
+  gap: 5px;
   align-items: center;
 }
 
@@ -38,6 +40,14 @@ span {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+a {
+  margin-top: auto;
+  margin-bottom: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--text-color);
 }
 
 .Counter {
@@ -62,6 +72,7 @@ span {
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 0 6px 0px black;
+  margin-top: auto;
 }
 
 .Card-Container {
@@ -74,17 +85,19 @@ span {
 .big {
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  width: clamp(620px, 80vw, 970px);
+  width: clamp(685px, 80vw, 970px);
   height: min-content;
   gap: 0 3px;
   padding: 3px 3px 0 3px;
 }
 
 .small {
-  grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
+  grid-template-columns: repeat( auto-fit, minmax(138px, 1fr) );
   gap: 0 4px;
   padding: 4px 4px 0 4px;
+  width: clamp(388px, 80vw, 600px);
 }
+
 
 @keyframes gradient {
 	0% {
@@ -122,9 +135,27 @@ img {
   height: auto;
 }
 
+@media only screen and (max-width: 704px) {
+  .small {
+    grid-template-columns: repeat( auto-fill, minmax(113px, 1fr) );
+    width: clamp(200px, 90vw, 444px);
+  }
+}
+
 @media only screen and (max-width: 620px) {
   .Header {
     flex-direction: column;
+  }
+
+  span {
+    align-items: unset;
+  }
+
+  .dark-harvest {
+    height: 65px;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .Counter {
@@ -136,14 +167,20 @@ img {
     margin-left: unset;
     margin-right: unset;
   }
+}
+
+@media only screen and (max-width: 420px) {
+  .Header {
+    font-size: 20px;
+  }
 
   span {
-    gap: 15px;
+    margin: 3px 0;
   }
 }
 
-@media only screen and (max-width: 620px) {
-  .content {
-    margin-top: 64px;
+@media only screen and (max-width: 385px) {
+  .small {
+    grid-template-columns: repeat( auto-fill, minmax(93px, 1fr) );
   }
 }

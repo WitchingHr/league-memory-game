@@ -8,6 +8,9 @@ export default function Main() {
         <div className="content">
           <CardContainer />
         </div>
+        <a href="https://github.com/WitchingHr/league-memory-game">
+          WitchingHr © 2023
+        </a>
     </div>
   );
 }
