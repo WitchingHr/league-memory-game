@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# League Memory Game
+## Basic Gameplay:
+Each round, the player is given 12 cards to choose from. The player must select each card exactly once to complete the round. If the player selects a card more then once, the round is lost and the game is reset. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Abstract
+Memory game created for The Odin Project curriculum. 
 
-## Available Scripts
+This project was build with React, with the main goal being to play around with the lifecycle hook, `useEffect`. 
 
-In the project directory, you can run:
+I was able to use this hook to call a state initializer on first render like so:
 
-### `npm start`
+```
+useEffect(() => {
+    setInitialState();
+}, []);
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This also let me call the exact function again at the end of the round to grab a new set of images without having to alter the function: 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+useEffect(() => {
+    if (correct.length === 12) {
 
-### `npm test`
+      // Get new board
+      setInitialState();
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+      // Reset correct array
+      setCorrect([]);
 
-### `npm run build`
+    }
+  }, [correct]);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+Here I used another lifecycle hook to watch the `correct` array to determine if the round was won every time that the array was updated.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Additionally, I made use of the javascript `Element.animate()` method for the first time. I found it was easier to use this method than toggle class method for single occurrence animations (in this case, round win and loss).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Lastly, I was able to dynamically import a random set of a dozen images out of 1651 each round. I was able to accomplish this first by putting all the images in a single folder and auto-renaming all the files to this format: 
+`img_1.png, img_2.png, img_3.png, etc.`
+Then I used a function to fill an array with 12 unique random numbers. Next, I set the `images` state to that array, and afterwards, mapped through the `images` array and rendered each image using a temperate literal string like so:
+```
+{images.map((img) =>
+  <img
+    src={require(`../assets/big/img_${img}.jpg`)}
+  />
+)}
+```
+## Lessons learned
 
-### `npm run eject`
+-   How to think in a React project (where should I keep state)
+-   Component lifecycle with `useEffect` 
+-   Dynamic importing
+-   `Element.animate()`
+-   More practice with `useContext`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Asset sources
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+All image and sound assets are from the video game League of Legends and owned by Riot Games. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I did not create any of these assets. 

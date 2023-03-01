@@ -8,9 +8,12 @@ export default function Main() {
         <div className="content">
           <CardContainer />
         </div>
-        <a href="https://github.com/WitchingHr/league-memory-game">
-          WitchingHr © 2023
-        </a>
+        <div className="footer">
+          <a href="https://github.com/WitchingHr/league-memory-game">
+            App created by WitchingHr, 2023.
+          </a>
+          <p>All image and sound assets are owned and created by Riot Games.</p>
+        </div>
     </div>
   );
 }
