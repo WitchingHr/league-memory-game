@@ -25,7 +25,7 @@ export default function CardContainer() {
   // Fill numbers array with random numbers
   function getRandom() {
     const num = Math.floor(Math.random() * 1651);
-    if (!numbers.includes(num)) {
+    if (num !== 0 && !numbers.includes(num)) {
       return num;
     } else {
       return getRandom();
@@ -145,7 +145,7 @@ export default function CardContainer() {
       setCorrect([]);
 
       // Increment spree
-      setSpree(spree + 1);
+      setSpree(s => s + 1);
     }
   }, [correct]);
 
