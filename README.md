@@ -1,4 +1,7 @@
 # League Memory Game
+<img width="1462" alt="Screenshot 2023-03-01 at 10 16 39 AM" src="https://user-images.githubusercontent.com/41353202/222182194-cfda8771-f9f8-4158-94d5-9007f758f257.png">
+<img width="431" alt="Screenshot 2023-03-01 at 10 17 17 AM" src="https://user-images.githubusercontent.com/41353202/222182213-99ee132d-a0b7-4339-82f2-90e280ca103b.png">
+
 ## Basic Gameplay:
 Each round, the player is given 12 cards to choose from. The player must select each card exactly once to complete the round. If the player selects a card more then once, the round is lost and the game is reset. 
 
